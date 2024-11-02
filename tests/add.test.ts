@@ -1,6 +1,6 @@
 import { add } from '../src/utils'
 
-jest.mock('../src/api/config', () => ({
+jest.mock('../src/api/config/config', () => ({
   debug: true,
 }))
 
