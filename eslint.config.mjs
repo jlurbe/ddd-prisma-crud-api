@@ -24,7 +24,6 @@ export default [
     rules: {
       eqeqeq: ['error', 'always'],
       curly: ['error', 'all'],
-      'no-empty-function': 'error',
       'no-implicit-coercion': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-duplicate-enum-values': 'error',
