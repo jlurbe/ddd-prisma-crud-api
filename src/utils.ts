@@ -1,4 +1,4 @@
-import config from './api/config'
+import config from './api/config/config'
 
 export function add(a: number, b: number): number {
   if (config.debug) {

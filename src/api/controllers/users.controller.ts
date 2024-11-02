@@ -34,7 +34,11 @@ export class UsersController {
     })
   }
 
-  async getUserById(req: Request, res: Response, next: NextFunction) {
+  async getUserById(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
     const { id } = req.params
     this.getUserByIdService
       .run(parseInt(id))
@@ -44,7 +48,11 @@ export class UsersController {
       .catch((err) => next(err))
   }
 
-  async createUser(req: Request, res: Response, next: NextFunction) {
+  async createUser(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
     const userInput: CreateUserInput = req.body
     this.createUserService
       .run(userInput)
@@ -54,7 +62,11 @@ export class UsersController {
       .catch((err) => next(err))
   }
 
-  async updateUser(req: Request, res: Response, next: NextFunction) {
+  async updateUser(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
     const userInput: UpdateUserInput = req.body
     const { id } = req.params
     this.updateUserService
@@ -65,7 +77,11 @@ export class UsersController {
       .catch((err) => next(err))
   }
 
-  async deleteUser(req: Request, res: Response, next: NextFunction) {
+  async deleteUser(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
     const { id } = req.params
     this.deleteUserService
       .run(parseInt(id))
