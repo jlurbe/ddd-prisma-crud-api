@@ -1,10 +1,11 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 
 export const errorHandler = (
   err: Error | PrismaClientKnownRequestError,
   _req: Request,
   res: Response,
+  next: NextFunction,
 ) => {
   if (err instanceof PrismaClientKnownRequestError) {
     // The .code property can be accessed in a type-safe manner
@@ -25,4 +26,5 @@ export const errorHandler = (
       error: err.message,
     })
   }
+  next()
 }

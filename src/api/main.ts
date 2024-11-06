@@ -9,7 +9,7 @@ const port = config.port || 3000
 // Enabling getting information from body
 app.use(express.json())
 // Users router
-app.use('/user', userRouter)
+app.use('/users', userRouter)
 // Error handling
 app.use(errorHandler)
 
