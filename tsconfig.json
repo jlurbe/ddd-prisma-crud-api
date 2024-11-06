@@ -1,7 +1,7 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./dist",
     "preserveConstEnums": true,
     "forceConsistentCasingInFileNames": true
@@ -10,6 +10,7 @@
     "src/**/*"
   ],
   "exclude": [
+    "tests/**/*",
     "node_modules",
     "dist"
   ]

@@ -27,6 +27,7 @@ export default [
       'no-implicit-coercion': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-duplicate-enum-values': 'error',
+      'jest/no-mocks-import': 'off',
     },
   },
   eslintConfigPrettier,
