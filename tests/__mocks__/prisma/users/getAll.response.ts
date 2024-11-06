@@ -1,6 +1,6 @@
 import { UserResponse } from '../../../../src/Contexts/user/domain/entities/User'
 
-export const getAllResponseOk: UserResponse[] = [
+export const getAllResponse: UserResponse[] = [
   {
     id: 1,
     username: 'johndoe',
