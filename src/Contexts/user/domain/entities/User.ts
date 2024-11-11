@@ -7,6 +7,6 @@ export type User = {
   mtime: Date
 }
 
-export type CreateUserInput = Omit<User, 'id | ctime | mtime'>
-export type UpdateUserInput = Omit<User, 'id | password | ctime | mtime'>
+export type CreateUserInput = Omit<User, 'id' | 'ctime' | 'mtime'>
+export type UpdateUserInput = Omit<User, 'id' | 'password' | 'ctime' | 'mtime'>
 export type UserResponse = Omit<User, 'password'>
