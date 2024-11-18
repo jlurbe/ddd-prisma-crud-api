@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
+import { CustomError } from '../../Contexts/shared/errors/domain/custom.error'
 
 export const errorHandler = (
   err: Error | PrismaClientKnownRequestError,
@@ -20,10 +21,18 @@ export const errorHandler = (
       console.error(JSON.stringify(err, null, 2))
       res.status(404).json({ error: 'Record not found' })
     }
+  } else if (err instanceof CustomError) {
+    // console.error(JSON.stringify(err.originalError, null, 2))
+    console.error(err.originalError)
+    res.status(err.statusCode).json({
+      status: err.statusCode,
+      message: err.message,
+    })
   } else {
     console.error(JSON.stringify(err, null, 2))
     res.status(500).json({
-      error: err.message,
+      status: 500,
+      message: 'Something went wrong',
     })
   }
   next()
