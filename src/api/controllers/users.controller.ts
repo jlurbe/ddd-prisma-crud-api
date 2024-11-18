@@ -11,6 +11,7 @@ import {
   GetUserByIdService,
   UpdateUserService,
 } from '../../Contexts/user/application'
+import { CustomError } from '../../Contexts/shared/errors/domain/custom.error'
 
 export class UsersController {
   constructor(
@@ -45,7 +46,9 @@ export class UsersController {
       .then((data) => {
         res.json(data)
       })
-      .catch((err) => next(err))
+      .catch((err) =>
+        next(new CustomError(`Error getting user with id ${id}`, 404, err)),
+      )
   }
 
   async createUser(
@@ -87,10 +90,11 @@ export class UsersController {
       .run(parseInt(id))
       .then((result) => {
         if (result) {
-          res.json({ msg: `User with id ${id} deleted` })
+          res.status(204).send()
         }
-        res.status(500).send({ error: `User with id ${id} not deleted` })
       })
-      .catch((err) => next(err))
+      .catch((err) =>
+        next(new CustomError(`Error deleting user with id ${id}`, 400, err)),
+      )
   }
 }
