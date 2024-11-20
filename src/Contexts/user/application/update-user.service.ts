@@ -4,10 +4,7 @@ import { UpdateUserInput, UserResponse } from '../domain/entities/User'
 export class UpdateUserService {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async run(
-    userInput: UpdateUserInput,
-    id: number,
-  ): Promise<UserResponse | null> {
+  async run(userInput: UpdateUserInput, id: number): Promise<UserResponse> {
     return this.userRepository.update(userInput, id)
   }
 }

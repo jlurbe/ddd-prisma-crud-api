@@ -12,6 +12,10 @@ import {
   UpdateUserService,
 } from '../../Contexts/user/application'
 import { CustomError } from '../../Contexts/shared/errors/domain/custom.error'
+import {
+  validateCreateUser,
+  validateUpdateUser,
+} from '../../Contexts/user/domain/schema/user.schema'
 
 export class UsersController {
   constructor(
@@ -56,13 +60,19 @@ export class UsersController {
     res: Response,
     next: NextFunction,
   ): Promise<void> {
-    const userInput: CreateUserInput = req.body
-    this.createUserService
-      .run(userInput)
-      .then((data) => {
-        res.json(data)
-      })
-      .catch((err) => next(err))
+    try {
+      const userInput: CreateUserInput = validateCreateUser(req.body)
+
+      const userData = await this.createUserService.run(userInput)
+
+      res.json(userData)
+    } catch (error) {
+      if (error instanceof CustomError) {
+        next(error)
+      } else {
+        next(new CustomError('Error creating user', 500, error as Error))
+      }
+    }
   }
 
   async updateUser(
@@ -70,14 +80,23 @@ export class UsersController {
     res: Response,
     next: NextFunction,
   ): Promise<void> {
-    const userInput: UpdateUserInput = req.body
-    const { id } = req.params
-    this.updateUserService
-      .run(userInput, parseInt(id))
-      .then((data) => {
-        res.json(data)
-      })
-      .catch((err) => next(err))
+    try {
+      const userInput: UpdateUserInput = validateUpdateUser(req.body)
+      const { id } = req.params
+
+      const userData: UserResponse = await this.updateUserService.run(
+        userInput,
+        parseInt(id),
+      )
+
+      res.json(userData)
+    } catch (error) {
+      if (error instanceof CustomError) {
+        next(error)
+      } else {
+        next(new CustomError('Error updating user', 500, error as Error))
+      }
+    }
   }
 
   async deleteUser(
