@@ -23,7 +23,7 @@ export const errorHandler = (
     }
   } else if (err instanceof CustomError) {
     // console.error(JSON.stringify(err.originalError, null, 2))
-    console.error(err.originalError)
+    console.error(err.originalError || err)
     res.status(err.statusCode).json({
       status: err.statusCode,
       message: err.message,
