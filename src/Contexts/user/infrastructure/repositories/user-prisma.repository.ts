@@ -7,6 +7,7 @@ import {
 } from '../../domain/entities/User'
 import { UserRepository } from '../../domain/repositories/user.repository'
 import { userMapper } from './mapper/user.mapper'
+import { PasswordUtils } from '../../../shared/utils/password.utils'
 
 /**
  * UserPrismaRepository is a repository that provides methods for
@@ -26,6 +27,7 @@ export class UserPrismaRepository implements UserRepository {
    */
   async getAll(): Promise<UserResponse[]> {
     const users = await this.prismaClient.users.findMany({})
+
     return users.map((user) => userMapper(user))
   }
 
@@ -48,9 +50,11 @@ export class UserPrismaRepository implements UserRepository {
    * @returns {Promise<UserResponse>} - A promise that resolves to the UserResponse object of the created user.
    */
   async create(userInput: CreateUserInput): Promise<UserResponse> {
+    userInput.password = await PasswordUtils.hash(userInput.password)
     const user: User = await this.prismaClient.users.create({
       data: userInput,
     })
+
     return userMapper(user)
   }
 
@@ -65,6 +69,7 @@ export class UserPrismaRepository implements UserRepository {
       where: { id },
       data: userInput,
     })
+
     return userMapper(user)
   }
 
