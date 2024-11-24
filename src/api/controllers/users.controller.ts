@@ -11,7 +11,7 @@ import {
   GetUserByIdService,
   UpdateUserService,
 } from '../../Contexts/user/application'
-import { CustomError } from '../../Contexts/shared/errors/domain/custom.error'
+import { CustomError } from '../../Contexts/shared/domain/errors/custom.error'
 import {
   validateCreateUser,
   validateUpdateUser,

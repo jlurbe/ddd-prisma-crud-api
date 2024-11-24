@@ -8,5 +8,7 @@ export type User = {
 }
 
 export type CreateUserInput = Omit<User, 'id' | 'ctime' | 'mtime'>
-export type UpdateUserInput = Partial<User>
+export type UpdateUserInput = Partial<
+  Omit<User, 'id' | 'password' | 'ctime' | 'mtime'>
+>
 export type UserResponse = Omit<User, 'password'>

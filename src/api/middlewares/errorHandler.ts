@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
-import { CustomError } from '../../Contexts/shared/errors/domain/custom.error'
+import { CustomError } from '../../Contexts/shared/domain/errors/custom.error'
 
 export const errorHandler = (
   err: Error | PrismaClientKnownRequestError,
