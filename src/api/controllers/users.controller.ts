@@ -84,10 +84,10 @@ export class UsersController {
       const userInput: UpdateUserInput = validateUpdateUser(req.body)
       const { id } = req.params
 
-      const userData: UserResponse = await this.updateUserService.run(
+      const userData: UserResponse = await this.updateUserService.run({
         userInput,
-        parseInt(id),
-      )
+        id: parseInt(id),
+      })
 
       res.json(userData)
     } catch (error) {
