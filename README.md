@@ -100,3 +100,5 @@ This project is licensed under the MIT License.
 - [x] Dockerized db in /etc
 - [ ] Dockerize rest of the application
 - [x] Hash passwords
+- [ ] Use object/value for types
+- [ ] Include more testing

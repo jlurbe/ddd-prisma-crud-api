@@ -1,6 +1,6 @@
 import z from 'zod'
 import { CreateUserInput, UpdateUserInput } from '../entities/User'
-import { CustomError } from '../../../shared/errors/domain/custom.error'
+import { CustomError } from '../../../shared/domain/errors/custom.error'
 
 const userCreateSchema = z.object({
   username: z.string({
