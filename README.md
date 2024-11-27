@@ -96,7 +96,7 @@ This project is licensed under the MIT License.
 
 - [ ] create a logger with pino, winston...
 - [x] insert a validator for the model
-- [ ] refactor files out of Contexts to ddd and remove Contexts
+- [x] refactor files out of Contexts to ddd and remove Contexts
 - [x] Dockerized db in /etc
 - [ ] Dockerize rest of the application
 - [x] Hash passwords

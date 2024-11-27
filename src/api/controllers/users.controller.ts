@@ -16,6 +16,8 @@ import {
   validateCreateUser,
   validateUpdateUser,
 } from '../../Contexts/user/domain/schema/user.schema'
+import { BaseError } from '../../Contexts/shared/domain/errors/base.error'
+import { UnexpectedError } from '../../Contexts/shared/domain/errors/unexpected.error'
 
 export class UsersController {
   constructor(
@@ -45,14 +47,16 @@ export class UsersController {
     next: NextFunction,
   ): Promise<void> {
     const { id } = req.params
-    this.getUserByIdService
-      .run(parseInt(id))
-      .then((data) => {
-        res.json(data)
-      })
-      .catch((err) =>
-        next(new CustomError(`Error getting user with id ${id}`, 404, err)),
-      )
+    try {
+      const user: UserResponse = await this.getUserByIdService.run(parseInt(id))
+      res.json(user)
+    } catch (error) {
+      if (error instanceof BaseError) {
+        next(error)
+      } else {
+        next(new UnexpectedError(this.constructor.name, 'getUserById', id))
+      }
+    }
   }
 
   async createUser(
