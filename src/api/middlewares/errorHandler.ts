@@ -1,17 +1,18 @@
 import { NextFunction, Request, Response } from 'express'
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import {
   BaseError,
   HttpStatusCode,
 } from '../../Contexts/shared/domain/errors/base.error'
 
 export const errorHandler = (
-  err: Error | PrismaClientKnownRequestError,
+  err: Error,
   _req: Request,
   res: Response,
   next: NextFunction,
 ) => {
-  console.error(err)
+  if (err instanceof BaseError) console.error(err.cause || err)
+  else console.error(err)
+
   const status =
     err instanceof BaseError
       ? err.httpCode
