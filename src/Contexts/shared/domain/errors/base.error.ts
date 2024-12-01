@@ -8,8 +8,8 @@ export class BaseError extends Error {
   public override readonly name: string
   public readonly httpCode: HttpStatusCode
 
-  constructor(httpCode: HttpStatusCode, description?: string) {
-    super(description)
+  constructor(httpCode: HttpStatusCode, description: string, cause?: Error) {
+    super(description, cause)
     Object.setPrototypeOf(this, new.target.prototype)
 
     this.name = this.constructor.name

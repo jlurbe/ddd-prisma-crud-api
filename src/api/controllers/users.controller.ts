@@ -11,11 +11,7 @@ import {
   GetUserByIdService,
   UpdateUserService,
 } from '../../Contexts/user/application'
-import { CustomError } from '../../Contexts/shared/domain/errors/custom.error'
-import {
-  validateCreateUser,
-  validateUpdateUser,
-} from '../../Contexts/user/domain/schema/user.schema'
+import { UserValidator } from '../../Contexts/user/domain/validation/user.validator'
 import { BaseError } from '../../Contexts/shared/domain/errors/base.error'
 import { UnexpectedError } from '../../Contexts/shared/domain/errors/unexpected.error'
 
@@ -54,7 +50,14 @@ export class UsersController {
       if (error instanceof BaseError) {
         next(error)
       } else {
-        next(new UnexpectedError(this.constructor.name, 'getUserById', id))
+        next(
+          new UnexpectedError(
+            this.constructor.name,
+            'getUserById',
+            id,
+            error as Error,
+          ),
+        )
       }
     }
   }
@@ -65,16 +68,25 @@ export class UsersController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const userInput: CreateUserInput = validateCreateUser(req.body)
+      const userInput: CreateUserInput = UserValidator.validateCreateUser(
+        req.body,
+      )
 
       const userData = await this.createUserService.run(userInput)
 
       res.json(userData)
     } catch (error) {
-      if (error instanceof CustomError) {
+      if (error instanceof BaseError) {
         next(error)
       } else {
-        next(new CustomError('Error creating user', 500, error as Error))
+        next(
+          new UnexpectedError(
+            this.constructor.name,
+            'createUser',
+            JSON.stringify(req.body),
+            error as Error,
+          ),
+        )
       }
     }
   }
@@ -85,7 +97,9 @@ export class UsersController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const userInput: UpdateUserInput = validateUpdateUser(req.body)
+      const userInput: UpdateUserInput = UserValidator.validateUpdateUser(
+        req.body,
+      )
       const { id } = req.params
 
       const userData: UserResponse = await this.updateUserService.run({
@@ -95,10 +109,17 @@ export class UsersController {
 
       res.json(userData)
     } catch (error) {
-      if (error instanceof CustomError) {
+      if (error instanceof BaseError) {
         next(error)
       } else {
-        next(new CustomError('Error updating user', 500, error as Error))
+        next(
+          new UnexpectedError(
+            this.constructor.name,
+            'updateUser',
+            JSON.stringify(req.body),
+            error as Error,
+          ),
+        )
       }
     }
   }
@@ -109,15 +130,25 @@ export class UsersController {
     next: NextFunction,
   ): Promise<void> {
     const { id } = req.params
-    this.deleteUserService
-      .run(parseInt(id))
-      .then((result) => {
-        if (result) {
-          res.status(204).send()
-        }
-      })
-      .catch((err) =>
-        next(new CustomError(`Error deleting user with id ${id}`, 400, err)),
-      )
+    try {
+      const result = await this.deleteUserService.run(parseInt(id))
+
+      if (result) {
+        res.status(204).send()
+      }
+    } catch (error) {
+      if (error instanceof BaseError) {
+        next(error)
+      } else {
+        next(
+          new UnexpectedError(
+            this.constructor.name,
+            'deleteUser',
+            id,
+            error as Error,
+          ),
+        )
+      }
+    }
   }
 }

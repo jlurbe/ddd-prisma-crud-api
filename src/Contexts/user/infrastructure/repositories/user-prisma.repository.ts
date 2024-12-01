@@ -34,10 +34,13 @@ export class UserPrismaRepository implements UserRepository {
       const users = await this.prismaClient.users.findMany({})
 
       return users.map((user) => userMapper(user))
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      // TODO: log the original error? remove eslint-disable
-      throw new DatabaseError(this.constructor.name, 'getAll', '')
+      throw new DatabaseError(
+        this.constructor.name,
+        'getAll',
+        '',
+        error as Error,
+      )
     }
   }
 
@@ -65,8 +68,13 @@ export class UserPrismaRepository implements UserRepository {
       if (error instanceof BaseError) {
         throw error
       }
-      // TODO: log the original error?
-      throw new DatabaseError(this.constructor.name, 'getById', id.toString())
+
+      throw new DatabaseError(
+        this.constructor.name,
+        'getById',
+        id.toString(),
+        error as Error,
+      )
     }
   }
 
@@ -84,13 +92,12 @@ export class UserPrismaRepository implements UserRepository {
       })
 
       return userMapper(user)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      // TODO: log the original error? remove eslint-disable
       throw new DatabaseError(
         this.constructor.name,
         'create',
         JSON.stringify(userInput),
+        error as Error,
       )
     }
   }
@@ -110,13 +117,12 @@ export class UserPrismaRepository implements UserRepository {
       })
 
       return userMapper(user)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      // TODO: log the original error? remove eslint-disable
       throw new DatabaseError(
         this.constructor.name,
         'update',
         JSON.stringify(userInput),
+        error as Error,
       )
     }
   }
@@ -129,15 +135,29 @@ export class UserPrismaRepository implements UserRepository {
    */
   async delete(id: number): Promise<boolean> {
     try {
-      return this.prismaClient.users
-        .delete({
-          where: { id },
-        })
-        .then(() => true)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const result = await this.prismaClient.users.delete({
+        where: { id },
+      })
+
+      if (!result) {
+        throw new DatabaseRecordNotFoundError(
+          this.constructor.name,
+          id.toString(),
+        )
+      }
+
+      return true
     } catch (error) {
-      // TODO: log the original error? remove eslint-disable
-      throw new DatabaseError(this.constructor.name, 'update', id.toString())
+      if (error instanceof BaseError) {
+        throw error
+      }
+
+      throw new DatabaseError(
+        this.constructor.name,
+        'delete',
+        id.toString(),
+        error as Error,
+      )
     }
   }
 }
