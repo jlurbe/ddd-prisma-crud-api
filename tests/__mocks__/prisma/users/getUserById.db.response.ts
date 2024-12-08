@@ -1,7 +1,7 @@
 import { User } from '../../../../src/Contexts/user/domain/entities/User'
 
 export const getUserByIdDbResponseOk: User = {
-  id: 1,
+  id: 'b04c4994-b4b5-11ef-96a4-0242ac120002',
   username: 'johndoe',
   email: 'johndoe@gmail.com',
   password: '$2a$10$DPlDlmKUMKHqtOj0zh6RlOjot7/QgWKFBhbQJoHtuSgheJ38X2dmG',

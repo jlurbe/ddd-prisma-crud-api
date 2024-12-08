@@ -46,11 +46,11 @@ export class UserPrismaRepository implements UserRepository {
 
   /**
    * Retrieves a user by its unique identifier.
-   * @param {number} id - The unique identifier of the user.
+   * @param {string} id - The unique identifier of the user.
    * @returns {Promise<UserResponse>} - A promise that resolves to the UserResponse object of the found user.
    * @throws {Error} - Throws an error if no user is found with the given id or the search fails.
    */
-  async getById(id: number): Promise<UserResponse> {
+  async getById(id: string): Promise<UserResponse> {
     try {
       const user = await this.prismaClient.users.findFirst({
         where: { id },
@@ -105,11 +105,11 @@ export class UserPrismaRepository implements UserRepository {
   /**
    * Updates an existing user in the database.
    * @param {UpdateUserInput} userInput - The data for updating the user.
-   * @param {number} id - The unique identifier of the user to update.
+   * @param {string} id - The unique identifier of the user to update.
    * @returns {Promise<UserResponse>} - A promise that resolves to the UserResponse object of the updated user.
    * @throws {Error} - Throws an error if the update fails.
    */
-  async update(userInput: UpdateUserInput, id: number): Promise<UserResponse> {
+  async update(userInput: UpdateUserInput, id: string): Promise<UserResponse> {
     try {
       const user: User = await this.prismaClient.users.update({
         where: { id },
@@ -129,11 +129,11 @@ export class UserPrismaRepository implements UserRepository {
 
   /**
    * Deletes a user from the database by its unique identifier.
-   * @param {number} id - The unique identifier of the user to delete.
+   * @param {string} id - The unique identifier of the user to delete.
    * @returns {Promise<boolean>} - A promise that resolves to true if the user is successfully deleted.
    * @throws {Error} - Throws an error if the deletion fails.
    */
-  async delete(id: number): Promise<boolean> {
+  async delete(id: string): Promise<boolean> {
     try {
       const result = await this.prismaClient.users.delete({
         where: { id },

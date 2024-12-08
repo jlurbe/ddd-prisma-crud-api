@@ -1,7 +1,7 @@
 import { UserResponse } from '../../../../src/Contexts/user/domain/entities/User'
 
 export const getUserByIdResponseOk: UserResponse = {
-  id: 1,
+  id: 'b04c4994-b4b5-11ef-96a4-0242ac120002',
   username: 'johndoe',
   email: 'johndoe@gmail.com',
   ctime: new Date('2024-10-26T20:35:35.000Z'),

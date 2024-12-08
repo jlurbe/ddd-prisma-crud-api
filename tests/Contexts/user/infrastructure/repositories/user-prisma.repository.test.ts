@@ -28,7 +28,9 @@ describe('UserPrismaRepository unit tests', () => {
     mockedPrismaClient.users.findFirst.mockResolvedValueOnce(
       getUserByIdDbResponseOk,
     )
-    const user = await userPrismaRepository.getById(1)
+    const user = await userPrismaRepository.getById(
+      'b04c4994-b4b5-11ef-96a4-0242ac120002',
+    )
 
     expect(user).toEqual(getUserByIdResponseOk)
   })
@@ -46,14 +48,19 @@ describe('UserPrismaRepository unit tests', () => {
     mockedPrismaClient.users.update.mockResolvedValueOnce(
       updateUserDbResponseOk,
     )
-    const updatedUser = await userPrismaRepository.update(updateUserInput, 1)
+    const updatedUser = await userPrismaRepository.update(
+      updateUserInput,
+      'b04c4994-b4b5-11ef-96a4-0242ac120002',
+    )
 
     expect(updatedUser).toEqual(updateUserResponseOk)
   })
 
   test('Delete User', async () => {
     mockedPrismaClient.users.delete.mockResolvedValueOnce(deleteUserResponseOk)
-    const result = await userPrismaRepository.delete(1)
+    const result = await userPrismaRepository.delete(
+      'b04c4994-b4b5-11ef-96a4-0242ac120002',
+    )
 
     expect(result).toBe(true)
   })

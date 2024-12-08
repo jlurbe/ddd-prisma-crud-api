@@ -1,7 +1,7 @@
 import { User } from '../../../../src/Contexts/user/domain/entities/User'
 
 export const updateUserDbResponseOk: User = {
-  id: 1,
+  id: 'b04c4994-b4b5-11ef-96a4-0242ac120002',
   username: 'johndoe',
   password: '123456',
   email: 'johndoe@gmail.com',

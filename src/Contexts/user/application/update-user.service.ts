@@ -4,7 +4,7 @@ import { IService } from '../../shared/domain/interfaces/service.inteface'
 
 export type UpdateUserInputWithId = {
   userInput: UpdateUserInput
-  id: number
+  id: string
 }
 
 export class UpdateUserService

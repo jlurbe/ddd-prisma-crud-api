@@ -44,7 +44,7 @@ export class UsersController {
   ): Promise<void> {
     const { id } = req.params
     try {
-      const user: UserResponse = await this.getUserByIdService.run(parseInt(id))
+      const user: UserResponse = await this.getUserByIdService.run(id)
       res.json(user)
     } catch (error) {
       if (error instanceof BaseError) {
@@ -104,7 +104,7 @@ export class UsersController {
 
       const userData: UserResponse = await this.updateUserService.run({
         userInput,
-        id: parseInt(id),
+        id,
       })
 
       res.json(userData)
@@ -131,7 +131,7 @@ export class UsersController {
   ): Promise<void> {
     const { id } = req.params
     try {
-      const result = await this.deleteUserService.run(parseInt(id))
+      const result = await this.deleteUserService.run(id)
 
       if (result) {
         res.status(204).send()
