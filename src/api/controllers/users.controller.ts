@@ -1,10 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
 import {
-  CreateUserInput,
-  UpdateUserInput,
-  UserResponse,
-} from '../../Contexts/user/domain/entities/User'
-import {
   CreateUserService,
   DeleteUserService,
   GetAllUsersService,
@@ -14,6 +9,9 @@ import {
 import { UserValidator } from '../../Contexts/user/domain/validation/user.validator'
 import { BaseError } from '../../Contexts/shared/domain/errors/base.error'
 import { UnexpectedError } from '../../Contexts/shared/domain/errors/unexpected.error'
+import { UserResponseDTO } from '../../Contexts/user/domain/dtos/user-response.dto'
+import { UpdateUserDTO } from '../../Contexts/user/domain/dtos/update-user.dto'
+import { CreateUserDTO } from '../../Contexts/user/domain/dtos/create-user.dto'
 
 export class UsersController {
   constructor(
@@ -32,7 +30,7 @@ export class UsersController {
   }
 
   async getUsers(_req: Request, res: Response): Promise<void> {
-    this.getAllUsersService.run().then((users: UserResponse[]) => {
+    this.getAllUsersService.run().then((users: UserResponseDTO[]) => {
       res.json(users)
     })
   }
@@ -44,7 +42,7 @@ export class UsersController {
   ): Promise<void> {
     const { id } = req.params
     try {
-      const user: UserResponse = await this.getUserByIdService.run(id)
+      const user: UserResponseDTO = await this.getUserByIdService.run(id)
       res.json(user)
     } catch (error) {
       if (error instanceof BaseError) {
@@ -68,7 +66,7 @@ export class UsersController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const userInput: CreateUserInput = UserValidator.validateCreateUser(
+      const userInput: CreateUserDTO = UserValidator.validateCreateUser(
         req.body,
       )
 
@@ -97,12 +95,12 @@ export class UsersController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const userInput: UpdateUserInput = UserValidator.validateUpdateUser(
+      const userInput: UpdateUserDTO = UserValidator.validateUpdateUser(
         req.body,
       )
       const { id } = req.params
 
-      const userData: UserResponse = await this.updateUserService.run({
+      const userData: UserResponseDTO = await this.updateUserService.run({
         userInput,
         id,
       })

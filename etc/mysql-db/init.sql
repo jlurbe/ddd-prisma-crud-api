@@ -1,7 +1,7 @@
 -- Table creation with MySQL-specific syntax
 CREATE TABLE IF NOT EXISTS users (
   id CHAR(36) NOT NULL PRIMARY KEY DEFAULT (UUID()),
-  username VARCHAR(50) NOT NULL,
+  name VARCHAR(50) NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(100) NOT NULL,
   ctime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- Sample user data
-INSERT INTO users (username, email, password) VALUES 
+INSERT INTO users (name, email, password) VALUES 
 ('johndoe', 'johndoe@gmail.com', '$2a$10$DPlDlmKUMKHqtOj0zh6RlOjot7/QgWKFBhbQJoHtuSgheJ38X2dmG'),
 ('janedoe', 'janedoe@gmail.com', '$2a$10$9tDnBjy3lRVFGBu/gbQFzeC3ZbRM9UnfnQ1FyYFX0LyxxSwfCkNji'),
 ('alexsmith', 'alexsmith@gmail.com', '$2a$10$3i6Umo2b8itbzpCqIhVktuTlQJL96Vx92kjFzbrXEL4V9b2b2J7Na'),

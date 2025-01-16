@@ -1,9 +1,10 @@
-import { User, UserResponse } from '../../../domain/entities/User'
+import { UserResponseDTO } from '../../../domain/dtos/user-response.dto'
+import { UserPrimitive } from '../../../domain/primtives/user.primitive'
 
-export const userMapper = (user: User): UserResponse => {
+export const userMapper = (user: UserPrimitive): UserResponseDTO => {
   return {
     id: user.id,
-    username: user.username,
+    name: user.name,
     email: user.email,
     ctime: user.ctime,
     mtime: user.mtime,

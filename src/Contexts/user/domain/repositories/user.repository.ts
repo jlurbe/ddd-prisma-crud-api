@@ -1,13 +1,11 @@
-import {
-  CreateUserInput,
-  UpdateUserInput,
-  UserResponse,
-} from '../entities/User'
+import { CreateUserDTO } from '../dtos/create-user.dto'
+import { UpdateUserDTO } from '../dtos/update-user.dto'
+import { UserResponseDTO } from '../dtos/user-response.dto'
 
 export interface UserRepository {
-  getAll(): Promise<UserResponse[]>
-  getById(id: string): Promise<UserResponse>
-  create(userInput: CreateUserInput): Promise<UserResponse>
-  update(userInput: UpdateUserInput, id: string): Promise<UserResponse>
+  getAll(): Promise<UserResponseDTO[]>
+  getById(id: string): Promise<UserResponseDTO>
+  create(userInput: CreateUserDTO): Promise<UserResponseDTO>
+  update(userInput: UpdateUserDTO, id: string): Promise<UserResponseDTO>
   delete(id: string): Promise<boolean>
 }

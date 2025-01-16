@@ -1,11 +1,11 @@
 import { UserRepository } from '../domain/repositories/user.repository'
-import { UserResponse } from '../domain/entities/User'
 import { IService } from '../../shared/domain/interfaces/service.inteface'
+import { UserResponseDTO } from '../domain/dtos/user-response.dto'
 
-export class GetAllUsersService implements IService<null, UserResponse[]> {
+export class GetAllUsersService implements IService<null, UserResponseDTO[]> {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async run(): Promise<UserResponse[]> {
+  async run(): Promise<UserResponseDTO[]> {
     return this.userRepository.getAll()
   }
 }

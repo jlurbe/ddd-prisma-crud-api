@@ -1,7 +1,7 @@
-import { CreateUserInput } from '../../../../src/Contexts/user/domain/entities/User'
+import { CreateUserDTO } from '../../../../src/Contexts/user/domain/dtos/create-user.dto'
 
-export const createUserInput: CreateUserInput = {
-  username: 'johndoe',
+export const createUserInput: CreateUserDTO = {
+  name: 'johndoe',
   password: '123456',
   email: 'johndoe@gmail.com',
 }

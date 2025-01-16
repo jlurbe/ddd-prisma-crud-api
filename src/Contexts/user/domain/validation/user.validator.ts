@@ -1,10 +1,11 @@
 import z from 'zod'
-import { CreateUserInput, UpdateUserInput } from '../entities/User'
 import { ValidationError } from '../../../shared/domain/errors/validation.error'
+import { CreateUserDTO } from '../dtos/create-user.dto'
+import { UpdateUserDTO } from '../dtos/update-user.dto'
 
 export class UserValidator {
   private static userCreateSchema = z.object({
-    username: z.string({
+    name: z.string({
       invalid_type_error: 'User name must be a string',
       required_error: 'User name is required',
     }),
@@ -24,7 +25,7 @@ export class UserValidator {
     .partial()
     .omit({ password: true })
 
-  public static validateCreateUser(user: CreateUserInput): CreateUserInput {
+  public static validateCreateUser(user: CreateUserDTO): CreateUserDTO {
     const result = this.userCreateSchema.safeParse(user)
 
     if (!result.success) {
@@ -41,7 +42,7 @@ export class UserValidator {
     return result.data
   }
 
-  public static validateUpdateUser(user: UpdateUserInput): UpdateUserInput {
+  public static validateUpdateUser(user: UpdateUserDTO): UpdateUserDTO {
     const result = this.userUpdateSchema.safeParse(user)
 
     if (!result.success) {

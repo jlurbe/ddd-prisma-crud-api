@@ -1,6 +1,6 @@
-import {  UpdateUserInput } from '../../../../src/Contexts/user/domain/entities/User'
+import { UpdateUserDTO } from '../../../../src/Contexts/user/domain/dtos/update-user.dto'
 
-export const updateUserInput: UpdateUserInput = {
-  username: 'johndoe',
+export const updateUserInput: UpdateUserDTO = {
+  name: 'johndoe',
   email: 'johndoe@gmail.com',
 }
