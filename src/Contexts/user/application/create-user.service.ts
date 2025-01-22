@@ -1,5 +1,5 @@
 import { UserRepository } from '../domain/repositories/user.repository'
-import { IService } from '../../shared/domain/interfaces/service.inteface'
+import { IService } from '../../shared/domain/interfaces/service.interface'
 import { CreateUserDTO } from '../domain/dtos/create-user.dto'
 import { UserResponseDTO } from '../domain/dtos/user-response.dto'
 

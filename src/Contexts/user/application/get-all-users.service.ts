@@ -1,5 +1,5 @@
 import { UserRepository } from '../domain/repositories/user.repository'
-import { IService } from '../../shared/domain/interfaces/service.inteface'
+import { IService } from '../../shared/domain/interfaces/service.interface'
 import { UserResponseDTO } from '../domain/dtos/user-response.dto'
 
 export class GetAllUsersService implements IService<null, UserResponseDTO[]> {

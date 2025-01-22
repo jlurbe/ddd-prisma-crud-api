@@ -1,4 +1,4 @@
-import { IService } from '../../shared/domain/interfaces/service.inteface'
+import { IService } from '../../shared/domain/interfaces/service.interface'
 import { UserRepository } from '../domain/repositories/user.repository'
 
 export class DeleteUserService implements IService<string, boolean> {
