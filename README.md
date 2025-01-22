@@ -78,6 +78,23 @@ A **GitHub Actions** workflow is configured to run linting and tests automatical
 ├── tsconfig.json          # TypeScript configuration
 ```
 
+## MySQL test database
+
+From etc/mysql-db folder
+
+1. For launching the database:
+   ```bash
+   docker-compose up
+   ```
+2. For stopping the database:
+   ```bash
+   docker-compose down
+   ```
+3. For stopping and remove all data:
+   ```bash
+   docker-compose down --volumes --remove-orphans
+   ```
+
 ## Contributing
 
 To contribute to this project:
