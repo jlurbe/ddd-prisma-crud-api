@@ -2,16 +2,12 @@ import { UserPrismaRepository } from '../../../../../src/Contexts/user/infrastru
 import { mockedPrismaClient } from '../../../../__mocks__/prisma/client'
 import {
   getAllDbResponse,
-  getAllResponse,
   getUserByIdDbResponseOk,
-  getUserByIdResponseOk,
   createUserInput,
   createUserDbResponseOk,
-  createUserResponseOk,
   updateUserInput,
   updateUserDbResponseOk,
-  updateUserResponseOk,
-  deleteUserResponseOk,
+  deleteUserDbResponseOk,
 } from '../../../../__mocks__/prisma/users'
 
 describe('UserPrismaRepository unit tests', () => {
@@ -21,7 +17,7 @@ describe('UserPrismaRepository unit tests', () => {
     mockedPrismaClient.users.findMany.mockResolvedValueOnce(getAllDbResponse)
     const users = await userPrismaRepository.getAll()
 
-    expect(users).toEqual(getAllResponse)
+    expect(users).toEqual(getAllDbResponse)
   })
 
   test('Get User by ID', async () => {
@@ -32,7 +28,7 @@ describe('UserPrismaRepository unit tests', () => {
       'b04c4994-b4b5-11ef-96a4-0242ac120002',
     )
 
-    expect(user).toEqual(getUserByIdResponseOk)
+    expect(user).toEqual(getUserByIdDbResponseOk)
   })
 
   test('Create User', async () => {
@@ -41,7 +37,7 @@ describe('UserPrismaRepository unit tests', () => {
     )
     const newUser = await userPrismaRepository.create(createUserInput)
 
-    expect(newUser).toEqual(createUserResponseOk)
+    expect(newUser).toEqual(createUserDbResponseOk)
   })
 
   test('Update User', async () => {
@@ -53,11 +49,13 @@ describe('UserPrismaRepository unit tests', () => {
       'b04c4994-b4b5-11ef-96a4-0242ac120002',
     )
 
-    expect(updatedUser).toEqual(updateUserResponseOk)
+    expect(updatedUser).toEqual(updateUserDbResponseOk)
   })
 
   test('Delete User', async () => {
-    mockedPrismaClient.users.delete.mockResolvedValueOnce(deleteUserResponseOk)
+    mockedPrismaClient.users.delete.mockResolvedValueOnce(
+      deleteUserDbResponseOk,
+    )
     const result = await userPrismaRepository.delete(
       'b04c4994-b4b5-11ef-96a4-0242ac120002',
     )
