@@ -2,13 +2,11 @@ import { PrismaClient } from '@prisma/client'
 import { UserPrismaRepository } from '../../Contexts/user/infrastructure/repositories/user-prisma.repository'
 
 import { UsersController } from '../controllers/users.controller'
-import {
-  GetAllUsersService,
-  GetUserByIdService,
-  CreateUserService,
-  UpdateUserService,
-  DeleteUserService,
-} from '../../Contexts/user/application'
+import { CreateUserService } from '../../Contexts/user/application/create-user.service'
+import { DeleteUserService } from '../../Contexts/user/application/delete-user.service'
+import { GetAllUsersService } from '../../Contexts/user/application/get-all-users.service'
+import { GetUserByIdService } from '../../Contexts/user/application/get-user-by-id.service'
+import { UpdateUserService } from '../../Contexts/user/application/update-user.service'
 
 const prismaClient = new PrismaClient()
 const userPrismaRepository = new UserPrismaRepository(prismaClient)

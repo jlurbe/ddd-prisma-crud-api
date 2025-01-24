@@ -117,6 +117,6 @@ This project is licensed under the MIT License.
 - [x] Dockerized db in /etc
 - [ ] Dockerize rest of the application
 - [x] Hash passwords
-- [ ] Use object/value for types
+- [x] Use object/value for types
 - [ ] Include more testing
-- [ ] Remove **[index files](https://josselinbuils.dev/blog/stop-using-index-files)**.
+- [x] Remove **[index files](https://josselinbuils.dev/blog/stop-using-index-files)**.

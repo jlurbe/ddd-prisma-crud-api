@@ -1,11 +1,9 @@
 import { NextFunction, Request, Response } from 'express'
-import {
-  CreateUserService,
-  DeleteUserService,
-  GetAllUsersService,
-  GetUserByIdService,
-  UpdateUserService,
-} from '../../Contexts/user/application'
+import { CreateUserService } from '../../Contexts/user/application/create-user.service'
+import { DeleteUserService } from '../../Contexts/user/application/delete-user.service'
+import { GetAllUsersService } from '../../Contexts/user/application/get-all-users.service'
+import { GetUserByIdService } from '../../Contexts/user/application/get-user-by-id.service'
+import { UpdateUserService } from '../../Contexts/user/application/update-user.service'
 import { UserValidator } from '../../Contexts/user/domain/validation/user.validator'
 import { BaseError } from '../../Contexts/shared/domain/errors/base.error'
 import { UnexpectedError } from '../../Contexts/shared/domain/errors/unexpected.error'
