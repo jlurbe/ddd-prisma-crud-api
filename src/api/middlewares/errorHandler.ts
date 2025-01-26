@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import {
   BaseError,
   HttpStatusCode,
-} from '../../Contexts/shared/domain/errors/base.error'
+} from '@contexts/shared/domain/errors/base.error'
 
 export const errorHandler = (
   err: Error,

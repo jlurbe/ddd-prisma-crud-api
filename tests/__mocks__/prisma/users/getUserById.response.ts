@@ -1,4 +1,4 @@
-import { UserResponseDTO } from '../../../../src/Contexts/user/domain/dtos/user-response.dto'
+import { UserResponseDTO } from '@contexts/user/domain/dtos/user-response.dto'
 
 export const getUserByIdResponseOk: UserResponseDTO = {
   id: 'b04c4994-b4b5-11ef-96a4-0242ac120002',

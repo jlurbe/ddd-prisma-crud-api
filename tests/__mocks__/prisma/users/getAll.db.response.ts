@@ -1,4 +1,4 @@
-import { UserPrimitive } from '../../../../src/Contexts/user/domain/primtives/user.primitive'
+import { UserPrimitive } from '@contexts/user/domain/primitives/user.primitive'
 
 export const getAllDbResponse: UserPrimitive[] = [
   {

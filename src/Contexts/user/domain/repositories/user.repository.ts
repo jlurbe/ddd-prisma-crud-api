@@ -1,5 +1,5 @@
 import { UpdateUserPersistenceDTO } from '../dtos/update-user-persistence.dto'
-import { UserPrimitive } from '../primtives/user.primitive'
+import { UserPrimitive } from '../primitives/user.primitive'
 
 export interface UserRepository {
   getAll(): Promise<UserPrimitive[]>

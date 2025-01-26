@@ -1,17 +1,18 @@
 {
-  "extends": "@tsconfig/node20/tsconfig.json",
+  "extends": "@tsconfig/node22/tsconfig.json",
   "compilerOptions": {
     "rootDir": "./",
     "outDir": "./dist",
     "preserveConstEnums": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@api/*": ["src/api/*"],
+      "@prismadb/*": ["prisma/*"],
+      "@contexts/*": ["src/Contexts/*"],
+      "@tests/*": ["tests/*"]
+    }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "tests/**/*",
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*", "tests/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,4 +1,4 @@
-import { UserResponseDTO } from '../../../../src/Contexts/user/domain/dtos/user-response.dto'
+import { UserResponseDTO } from '@contexts/user/domain/dtos/user-response.dto'
 
 export const getAllResponse: UserResponseDTO[] = [
   {

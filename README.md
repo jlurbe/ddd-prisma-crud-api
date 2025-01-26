@@ -120,3 +120,4 @@ This project is licensed under the MIT License.
 - [x] Use object/value for types
 - [ ] Include more testing
 - [x] Remove **[index files](https://josselinbuils.dev/blog/stop-using-index-files)**.
+- [x] Create paths aliases in tsconfig

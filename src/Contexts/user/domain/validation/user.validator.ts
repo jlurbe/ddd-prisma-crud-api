@@ -1,5 +1,5 @@
 import z from 'zod'
-import { ValidationError } from '../../../shared/domain/errors/validation.error'
+import { ValidationError } from '@contexts/shared/domain/errors/validation.error'
 import { CreateUserDTO } from '../dtos/create-user.dto'
 import { UpdateUserDTO } from '../dtos/update-user.dto'
 

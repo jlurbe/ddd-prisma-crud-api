@@ -1,4 +1,4 @@
-import { UserPrimitive } from '../../../../src/Contexts/user/domain/primtives/user.primitive'
+import { UserPrimitive } from '@contexts/user/domain/primitives/user.primitive'
 
 export const createUserInput: UserPrimitive = {
   id: 'b04c4994-b4b5-11ef-96a4-0242ac120002',

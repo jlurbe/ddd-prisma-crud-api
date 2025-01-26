@@ -1,10 +1,10 @@
 import { PrismaClient } from '@prisma/client'
-import { UserRepository } from '../../domain/repositories/user.repository'
-import { DatabaseRecordNotFoundError } from '../../../shared/domain/errors/database-record-not-found.error'
-import { BaseError } from '../../../shared/domain/errors/base.error'
-import { DatabaseError } from '../../../shared/domain/errors/database.error'
-import { UserPrimitive } from '../../domain/primtives/user.primitive'
-import { UpdateUserPersistenceDTO } from '../../domain/dtos/update-user-persistence.dto'
+import { UserRepository } from '@contexts/user/domain/repositories/user.repository'
+import { DatabaseRecordNotFoundError } from '@contexts/shared/domain/errors/database-record-not-found.error'
+import { BaseError } from '@contexts/shared/domain/errors/base.error'
+import { DatabaseError } from '@contexts/shared/domain/errors/database.error'
+import { UserPrimitive } from '@contexts/user/domain/primitives/user.primitive'
+import { UpdateUserPersistenceDTO } from '@contexts/user/domain/dtos/update-user-persistence.dto'
 
 /**
  * UserPrismaRepository is a repository that provides methods for

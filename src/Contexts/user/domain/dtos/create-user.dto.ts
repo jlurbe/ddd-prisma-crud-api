@@ -1,4 +1,4 @@
-import { UserPrimitive } from '../primtives/user.primitive'
+import { UserPrimitive } from '../primitives/user.primitive'
 
 //TODO: Maybe the id should be mandatory and created before the save
 //TODO: make it one with the update?

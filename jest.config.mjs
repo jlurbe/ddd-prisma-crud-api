@@ -1,4 +1,7 @@
-module.exports = {
+import { pathsToModuleNameMapper } from 'ts-jest';
+import tsconfig from './tsconfig.json' with { type: 'json' };
+
+export default {
   // Use ts-jest preset for testing TypeScript files with Jest
   preset: 'ts-jest',
   // Set the test environment to Node.js
@@ -17,4 +20,7 @@ module.exports = {
 
   // File extensions to recognize in module resolution
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+
+  // Map TypeScript paths to Jest module paths
+  moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths, { prefix: '<rootDir>/' }),
 }

@@ -1,12 +1,12 @@
-import { UserPrismaRepository } from '../../../../../src/Contexts/user/infrastructure/repositories/user-prisma.repository'
-import { mockedPrismaClient } from '../../../../__mocks__/prisma/client'
-import { createUserInput } from '../../../../__mocks__/prisma/users/createUser.input'
-import { createUserDbResponseOk } from '../../../../__mocks__/prisma/users/createUserDb.response'
-import { deleteUserDbResponseOk } from '../../../../__mocks__/prisma/users/deleteUserDb.response'
-import { getAllDbResponse } from '../../../../__mocks__/prisma/users/getAll.db.response'
-import { getUserByIdDbResponseOk } from '../../../../__mocks__/prisma/users/getUserById.db.response'
-import { updateUserInput } from '../../../../__mocks__/prisma/users/updateUser.input'
-import { updateUserDbResponseOk } from '../../../../__mocks__/prisma/users/updateUserDb.response'
+import { UserPrismaRepository } from '@contexts/user/infrastructure/repositories/user-prisma.repository'
+import { mockedPrismaClient } from '@tests/__mocks__/prisma/client'
+import { createUserInput } from '@tests/__mocks__/prisma/users/createUser.input'
+import { createUserDbResponseOk } from '@tests/__mocks__/prisma/users/createUserDb.response'
+import { deleteUserDbResponseOk } from '@tests/__mocks__/prisma/users/deleteUserDb.response'
+import { getAllDbResponse } from '@tests/__mocks__/prisma/users/getAll.db.response'
+import { getUserByIdDbResponseOk } from '@tests/__mocks__/prisma/users/getUserById.db.response'
+import { updateUserInput } from '@tests/__mocks__/prisma/users/updateUser.input'
+import { updateUserDbResponseOk } from '@tests/__mocks__/prisma/users/updateUserDb.response'
 
 describe('UserPrismaRepository unit tests', () => {
   const userPrismaRepository = new UserPrismaRepository(mockedPrismaClient)

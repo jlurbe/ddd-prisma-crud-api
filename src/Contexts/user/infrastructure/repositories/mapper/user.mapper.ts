@@ -1,5 +1,5 @@
-import { UserResponseDTO } from '../../../domain/dtos/user-response.dto'
-import { UserPrimitive } from '../../../domain/primtives/user.primitive'
+import { UserResponseDTO } from '@contexts/user/domain/dtos/user-response.dto'
+import { UserPrimitive } from '@contexts/user/domain/primitives/user.primitive'
 
 export const userMapper = (user: UserPrimitive): UserResponseDTO => {
   return {
