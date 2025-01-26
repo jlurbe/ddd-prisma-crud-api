@@ -1,23 +1,23 @@
-import { UserResponse } from '../../../../src/Contexts/user/domain/entities/User'
+import { UserResponseDTO } from '@contexts/user/domain/dtos/user-response.dto'
 
-export const getAllResponse: UserResponse[] = [
+export const getAllResponse: UserResponseDTO[] = [
   {
-    id: 1,
-    username: 'johndoe',
+    id: 'b04c4994-b4b5-11ef-96a4-0242ac120002',
+    name: 'johndoe',
     email: 'johndoe@gmail.com',
     ctime: new Date('2024-10-26T20:35:35.000Z'),
     mtime: new Date('2024-10-26T20:35:35.000Z'),
   },
   {
-    id: 2,
-    username: 'janedoe',
+    id: 'b04c4c4c-b4b5-11ef-96a4-0242ac120002',
+    name: 'janedoe',
     email: 'janedoe@gmail.com',
     ctime: new Date('2024-10-26T20:35:35.000Z'),
     mtime: new Date('2024-10-26T20:35:35.000Z'),
   },
   {
-    id: 3,
-    username: 'alexsmith',
+    id: 'b04c4cfa-b4b5-11ef-96a4-0242ac120002',
+    name: 'alexsmith',
     email: 'alexsmith@gmail.com',
     ctime: new Date('2024-10-26T20:35:35.000Z'),
     mtime: new Date('2024-10-26T20:35:35.000Z'),

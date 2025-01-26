@@ -78,6 +78,23 @@ A **GitHub Actions** workflow is configured to run linting and tests automatical
 ├── tsconfig.json          # TypeScript configuration
 ```
 
+## MySQL test database
+
+From etc/mysql-db folder
+
+1. For launching the database:
+   ```bash
+   docker-compose up
+   ```
+2. For stopping the database:
+   ```bash
+   docker-compose down
+   ```
+3. For stopping and remove all data:
+   ```bash
+   docker-compose down --volumes --remove-orphans
+   ```
+
 ## Contributing
 
 To contribute to this project:
@@ -95,8 +112,12 @@ This project is licensed under the MIT License.
 ## TODOs
 
 - [ ] create a logger with pino, winston...
-- [v] insert a validator for the model
-- [ ] refactor files out of Contexts to ddd and remove Contexts
-- [v] Dockerized db in /etc
+- [x] insert a validator for the model
+- [x] refactor files out of Contexts to ddd and remove Contexts
+- [x] Dockerized db in /etc
 - [ ] Dockerize rest of the application
-- [v] Hash passwords
+- [x] Hash passwords
+- [x] Use object/value for types
+- [ ] Include more testing
+- [x] Remove **[index files](https://josselinbuils.dev/blog/stop-using-index-files)**.
+- [x] Create paths aliases in tsconfig
