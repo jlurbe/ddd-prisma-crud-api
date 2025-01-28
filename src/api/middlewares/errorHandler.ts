@@ -10,8 +10,8 @@ export const errorHandler = (
   res: Response,
   next: NextFunction,
 ) => {
-  if (err instanceof BaseError) console.error(err.cause || err)
-  else console.error(err)
+  // if (err instanceof BaseError) console.error(err.cause || err)
+  // else console.error(err)
 
   const status =
     err instanceof BaseError
