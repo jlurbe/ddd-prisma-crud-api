@@ -72,7 +72,14 @@ By working on this project, you can dive deep into software design patterns, eff
    npm install
    ```
 3. Create a .env file at the root of your project.
-   Add the necessary environment variables
+   Add the necessary environment variables. This is an example:
+   ```bash
+   NODE_ENV=development
+   APP_DEBUG=true
+   PORT=3000
+   # DATABASE URL FOR PRISMA
+   DATABASE_URL="mysql://admin:admin@localhost:3306/test_db"
+   ```
 4. Run the development server:
    ```bash
    npm run start:dev
@@ -172,7 +179,7 @@ This project is licensed under the MIT License.
 
 ## TODOs
 
-- [ ] create a logger with pino, winston...
+- [x] create a logger with pino, winston...
 - [x] insert a validator for the model
 - [x] refactor files out of Contexts to ddd and remove Contexts
 - [x] Dockerized db in /etc
